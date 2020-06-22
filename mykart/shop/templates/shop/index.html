@@ -31,6 +31,7 @@ background-color: blue;
 
 .carousel-control-prev,
 .carousel-control-next{
+  padding-top: 200px;
 top: auto;
 bottom: auto;
 }
@@ -47,7 +48,8 @@ padding-right: 0;
   <!--Slideshow starts here -->
   {% for product,range,nSlides in allProds%}
   <h1 class="my-4">{{product.0.category}}</h1>
-  <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+  <div class="row">
+  <div id="demo{{forloop.counter}}" class="carousel slide my-3 col" data-ride="carousel">
     <ul class="carousel-indicators">
       <li data-target="#demo{{forloop.counter}}" data-slide-to="{{i}}" class="active"></li>
       {% for i in range  %}
@@ -88,6 +90,7 @@ padding-right: 0;
     <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
       <span class="carousel-control-next-icon"></span>
     </a>
+  </div>
     {% endfor %}
   </div>
     {% endblock %}
@@ -110,8 +113,9 @@ padding-right: 0;
             cart[idStr]=1;
           }
           localStorage.setItem('cart', JSON.stringify(cart));
-          
         });
+        $('#popcart').popover();
+        document.getElementById("popcart").setAttribute('data-content', "<h5>Cart</h5>");
       </script>
     {% endblock %}
 
